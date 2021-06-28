@@ -1,0 +1,126 @@
+#include <iostream>
+#include <string>
+#include <math.h>
+char numbers[] = {'1','2','3','4','5','6','7','8','8','9','0'};
+char variables[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+bool Check(char symbolType, char symbol)
+{
+	if(symbolType == 'n')
+	{
+		for(int k = 0; k < 10; k++)
+		{
+			if(symbol == numbers[k])
+			{
+//				std::cout<<"Fuck"<<std::endl;
+				return 1;
+			}
+					
+		}
+		return 0;
+		
+	}
+	else if(symbolType == 'v')
+	{
+		for(int g = 0; g < 26; g++)
+		{
+			if(symbol == variables[g])
+			{
+//				std::cout<<"Ass"<<std::endl;
+				return 1;
+			}
+		
+		}
+		return 0;
+		
+	}
+	else
+		return 0;
+}
+void slide()
+{
+	std::cout<<"----------------------------------------------------------------------------------------------------------"<<std::endl;
+}
+void Derivative(std::string Function)
+{
+	std::string pluses = "";
+	std::string minuses = "";
+	std::string multiplies = "";
+	std::string divisions = "";
+	std::string breckets = "";
+	std::string dots = "";
+	std::string powers = "";
+	std::string numbers = "";
+	std::string variables = "";
+	for(int i = 0; i < Function.length(); i++)
+	{
+		if (Function[i] == '+')
+			pluses += "+";
+		else
+			pluses += "_";
+				
+		if (Function[i] == '-')
+			minuses += "-";
+		else
+			minuses += "_";
+		if (Function[i] == '*')
+			multiplies += "*";
+		else
+			multiplies += "_";
+		if (Function[i] == '/')
+			divisions += "/";
+		else
+			divisions += "_";
+		if(Function[i] == (('(') || (')')))
+		{
+			if(Function[i] == ')')
+				breckets += ")";
+			else if(Function[i] == '(')
+				breckets += "(";
+		}
+		else 
+			breckets += "_";
+		if(Function[i] == ')')
+				breckets += ")";
+//		else 
+//				breckets += "_";
+		if (Function[i] == '.')
+			dots += ".";
+		else
+			dots += "_";
+		if (Function[i] == '^')
+			powers += "^";
+		else
+			powers += "_";
+		if (Check('n', Function[i]))
+			numbers += Function[i];
+		else
+			numbers += "_";
+		if (Check('v', Function[i]))
+			variables += Function[i];
+		else
+			variables += "_";
+	}
+	slide();
+		std::cout<<"Pluses:    "<<pluses<<std::endl;
+		std::cout<<"Minuses:   "<<minuses<<std::endl;
+		std::cout<<"Multiplies:"<<multiplies<<std::endl;
+		std::cout<<"Divisions: "<<divisions<<std::endl;
+		std::cout<<"Breckets:  "<<std::endl;
+		std::cout<<"Dots:      "<<dots<<std::endl;
+		std::cout<<"Powers:    "<<powers<<std::endl;
+		std::cout<<"Numbers:   "<<numbers<<std::endl;
+		std::cout<<"Variables: "<<variables<<std::endl;
+		std::cout<<"Function:  ";
+		for(int j = 0; j < Function.length(); j++)
+		{
+			std::cout<<Function[j];
+		}
+		std::cout<<std::endl;
+	slide();
+}
+int main()
+{
+	std::cout<<"f+uc+k"<<std::endl;
+	Derivative("qqqq()qqq*^/12c3677.4+5-678+++9");
+}
+
