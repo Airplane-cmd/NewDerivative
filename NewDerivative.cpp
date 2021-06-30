@@ -55,8 +55,10 @@ void Derivative(std::string Function)
 	std::string breckets = "";
 	std::string dots = "";
 	std::string powers = "";
-	std::string numbers = "";
+	std::string numbersR = "";
 	std::string variables = "";
+	
+	int realNumbersCounter = 0;
 	for(int i = 0; i < Function.length(); i++)
 	{
 		if ((Check('v', Function[i - 1]) && Check('v', Function[i])) || (Check('v', Function[i - 1]) && Check('n', Function[i])) || (Check('n', Function[i - 1]) && Check('v', Function[i])) || (Check('n', Function[i - 1]) && (Function[i] == '(')) || (Check('v', Function[i - 1]) && (Function[i] == '(')) || (Function[i - 1] == ')') && (Function[i] == '('))
@@ -103,13 +105,16 @@ void Derivative(std::string Function)
 			breckets += "_";
 		if (((Check('n', Function[i]))) || (Function[i] == '.'))
 		{
+			++realNumbersCounter;
+			if(((Check('n', Function[i + 1]))) || (Function[i + 1] == '.'))
+				--realNumbersCounter;
 			if (Check('n', Function[i]))
-				numbers += Function[i];
+				numbersR += Function[i];
 			else if (Function[i] == '.')
-				numbers += ".";
+				numbersR += ".";
 		}
 		else 
-			numbers += "_";
+			numbersR += "_";
 		if (Function[i] == '.')
 			dots += ".";
 		else
@@ -123,16 +128,19 @@ void Derivative(std::string Function)
 		else
 			variables += "_";
 	}
+//	for(int numberSymbolCounter = 0; numberSymbolCounter < numbersR.length(); ++numberSymbolCounter)
 	std::cout << std::endl;
-		std::cout<<"Modified function:"<<Function<<std::endl;
-		std::cout<<"Pluses:           "<<pluses<<std::endl;
-		std::cout<<"Minuses:          "<<minuses<<std::endl;
-		std::cout<<"Multiplies:       "<<multiplies<<std::endl;
-		std::cout<<"Divisions:        "<<divisions<<std::endl;
-		std::cout<<"Breckets:         "<<breckets<<std::endl;
-		std::cout<<"Powers:           "<<powers<<std::endl;
-		std::cout<<"Numbers:          "<<numbers<<std::endl;
-		std::cout<<"Variables:        "<<variables<<std::endl;
+		std::cout<<"Modified function: "<<Function<<std::endl;
+		std::cout<<"Pluses:            "<<pluses<<std::endl;
+		std::cout<<"Minuses:           "<<minuses<<std::endl;
+		std::cout<<"Multiplies:        "<<multiplies<<std::endl;
+		std::cout<<"Divisions:         "<<divisions<<std::endl;
+		std::cout<<"Breckets:          "<<breckets<<std::endl;
+		std::cout<<"Powers:            "<<powers<<std::endl;
+		std::cout<<"Numbers:           "<<numbersR<<std::endl;
+		std::cout<<"Variables:         "<<variables<<std::endl;
+	slide();
+		std::cout<<"Real numbers count:"<<realNumbersCounter<<std::endl;
 	slide();
 }
 int main()
