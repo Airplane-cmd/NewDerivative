@@ -130,16 +130,17 @@ void Derivative(std::string Function)
 			variables += "_";
 	}
 	double *realDoubles = new double[realNumbersCounter];
-	std::vector<std::string> realStrings; 
+	std::vector<std::string> realStrings;
+	realStrings.resize(realNumbersCounter);
 	int fuckingCounter = 0;
-	for(int realNumbersCounter = 0; realNumbersCounter < Function.length(); ++realNumbersCounter)
+	for(int realNumbersCounterLocal = 0; realNumbersCounterLocal < Function.length(); ++realNumbersCounterLocal)
 	{
-		if(numbersR[realNumbersCounter] != '_')
-			realStrings[fuckingCounter] += numbersR[realNumbersCounter];
+		if(numbersR[realNumbersCounterLocal] != '_')
+			realStrings[fuckingCounter] += numbersR[realNumbersCounterLocal];
 		else
 		{
 			++fuckingCounter;
-			if(numbersR[realNumbersCounter + 1] == '_')
+			if(numbersR[realNumbersCounterLocal + 1] == '_')
 				--fuckingCounter;
 		}
 			
@@ -157,6 +158,10 @@ void Derivative(std::string Function)
 		std::cout<<"Variables:         "<<variables<<std::endl;
 	slide();
 		std::cout<<"Real numbers count:"<<realNumbersCounter<<std::endl;
+		for (int you = 0; you < realNumbersCounter; ++you)
+		{
+			std::cout << realStrings[you] << std::endl;
+		}
 	slide();
 }
 int main()
