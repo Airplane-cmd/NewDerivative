@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <math.h>
+#include <vector>
 char numbers[] = {'1','2','3','4','5','6','7','8','8','9','0'};
 char variables[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 bool Check(char symbolType, char symbol)
@@ -128,7 +129,22 @@ void Derivative(std::string Function)
 		else
 			variables += "_";
 	}
-//	for(int numberSymbolCounter = 0; numberSymbolCounter < numbersR.length(); ++numberSymbolCounter)
+	double *realDoubles = new double[realNumbersCounter];
+	std::vector<std::string> realStrings; 
+	int fuckingCounter = 0;
+	for(int realNumbersCounter = 0; realNumbersCounter < Function.length(); ++realNumbersCounter)
+	{
+		if(numbersR[realNumbersCounter] != '_')
+			realStrings[fuckingCounter] += numbersR[realNumbersCounter];
+		else
+		{
+			++fuckingCounter;
+			if(numbersR[realNumbersCounter + 1] == '_')
+				--fuckingCounter;
+		}
+			
+			
+	}
 	std::cout << std::endl;
 		std::cout<<"Modified function: "<<Function<<std::endl;
 		std::cout<<"Pluses:            "<<pluses<<std::endl;
