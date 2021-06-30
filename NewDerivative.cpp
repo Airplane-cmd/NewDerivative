@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <math.h>
+#include <vector>
 char numbers[] = {'1','2','3','4','5','6','7','8','8','9','0'};
 char variables[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 bool Check(char symbolType, char symbol)
@@ -55,8 +56,10 @@ void Derivative(std::string Function)
 	std::string breckets = "";
 	std::string dots = "";
 	std::string powers = "";
-	std::string numbers = "";
+	std::string numbersR = "";
 	std::string variables = "";
+	
+	int realNumbersCounter = 0;
 	for(int i = 0; i < Function.length(); i++)
 	{
 		if ((Check('v', Function[i - 1]) && Check('v', Function[i])) || (Check('v', Function[i - 1]) && Check('n', Function[i])) || (Check('n', Function[i - 1]) && Check('v', Function[i])) || (Check('n', Function[i - 1]) && (Function[i] == '(')) || (Check('v', Function[i - 1]) && (Function[i] == '(')) || (Function[i - 1] == ')') && (Function[i] == '('))
@@ -103,13 +106,16 @@ void Derivative(std::string Function)
 			breckets += "_";
 		if (((Check('n', Function[i]))) || (Function[i] == '.'))
 		{
+			++realNumbersCounter;
+			if(((Check('n', Function[i + 1]))) || (Function[i + 1] == '.'))
+				--realNumbersCounter;
 			if (Check('n', Function[i]))
-				numbers += Function[i];
+				numbersR += Function[i];
 			else if (Function[i] == '.')
-				numbers += ".";
+				numbersR += ".";
 		}
 		else 
-			numbers += "_";
+			numbersR += "_";
 		if (Function[i] == '.')
 			dots += ".";
 		else
@@ -123,16 +129,39 @@ void Derivative(std::string Function)
 		else
 			variables += "_";
 	}
+	double *realDoubles = new double[realNumbersCounter];
+	std::vector<std::string> realStrings;
+	realStrings.resize(realNumbersCounter);
+	int fuckingCounter = 0;
+	for(int realNumbersCounterLocal = 0; realNumbersCounterLocal < Function.length(); ++realNumbersCounterLocal)
+	{
+		if(numbersR[realNumbersCounterLocal] != '_')
+			realStrings[fuckingCounter] += numbersR[realNumbersCounterLocal];
+		else
+		{
+			++fuckingCounter;
+			if(numbersR[realNumbersCounterLocal + 1] == '_')
+				--fuckingCounter;
+		}
+			
+			
+	}
 	std::cout << std::endl;
-		std::cout<<"Modified function:"<<Function<<std::endl;
-		std::cout<<"Pluses:           "<<pluses<<std::endl;
-		std::cout<<"Minuses:          "<<minuses<<std::endl;
-		std::cout<<"Multiplies:       "<<multiplies<<std::endl;
-		std::cout<<"Divisions:        "<<divisions<<std::endl;
-		std::cout<<"Breckets:         "<<breckets<<std::endl;
-		std::cout<<"Powers:           "<<powers<<std::endl;
-		std::cout<<"Numbers:          "<<numbers<<std::endl;
-		std::cout<<"Variables:        "<<variables<<std::endl;
+		std::cout<<"Modified function: "<<Function<<std::endl;
+		std::cout<<"Pluses:            "<<pluses<<std::endl;
+		std::cout<<"Minuses:           "<<minuses<<std::endl;
+		std::cout<<"Multiplies:        "<<multiplies<<std::endl;
+		std::cout<<"Divisions:         "<<divisions<<std::endl;
+		std::cout<<"Breckets:          "<<breckets<<std::endl;
+		std::cout<<"Powers:            "<<powers<<std::endl;
+		std::cout<<"Numbers:           "<<numbersR<<std::endl;
+		std::cout<<"Variables:         "<<variables<<std::endl;
+	slide();
+		std::cout<<"Real numbers count:"<<realNumbersCounter<<std::endl;
+		for (int you = 0; you < realNumbersCounter; ++you)
+		{
+			std::cout << realStrings[you] << std::endl;
+		}
 	slide();
 }
 int main()
