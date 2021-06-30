@@ -42,6 +42,12 @@ void slide()
 }
 void Derivative(std::string Function)
 {
+//	for (int j = 0; j < Function.length(); j++)
+//	{
+//		std::cout << Function[j];
+//	}
+	std::cout << "Function:  "<<Function<<std::endl;
+	slide();
 	std::string pluses = "";
 	std::string minuses = "";
 	std::string multiplies = "";
@@ -53,6 +59,22 @@ void Derivative(std::string Function)
 	std::string variables = "";
 	for(int i = 0; i < Function.length(); i++)
 	{
+		if ((Check('v', Function[i - 1]) && Check('v', Function[i])) || (Check('v', Function[i - 1]) && Check('n', Function[i])) || (Check('n', Function[i - 1]) && Check('v', Function[i])) || (Check('n', Function[i - 1]) && (Function[i] == '(')) || (Check('v', Function[i - 1]) && (Function[i] == '(')) || (Function[i - 1] == ')') && (Function[i] == '('))
+			{
+				Function += "`";
+				char* FunctionFictional = new char[Function.length() + 1];
+				for (int z = 0; z < Function.length() + 1; z++)
+				{
+					FunctionFictional[z] = Function[z];
+				}
+				for (int j = i; j < Function.length() + 1; j++)
+				{
+					Function[j + 1] = FunctionFictional[j];
+
+				}
+				Function[i] = '*';
+
+			}
 		if (Function[i] == '+')
 			pluses += "+";
 		else
@@ -101,27 +123,20 @@ void Derivative(std::string Function)
 		else
 			variables += "_";
 	}
-	slide();
-	std::cout << "Function:  ";
-	for (int j = 0; j < Function.length(); j++)
-	{
-		std::cout << Function[j];
-	}
 	std::cout << std::endl;
-		std::cout<<"Pluses:    "<<pluses<<std::endl;
-		std::cout<<"Minuses:   "<<minuses<<std::endl;
-		std::cout<<"Multiplies:"<<multiplies<<std::endl;
-		std::cout<<"Divisions: "<<divisions<<std::endl;
-		std::cout<<"Breckets:  "<<breckets<<std::endl;
-		std::cout<<"Dots:      "<<dots<<std::endl;
-		std::cout<<"Powers:    "<<powers<<std::endl;
-		std::cout<<"Numbers:   "<<numbers<<std::endl;
-		std::cout<<"Variables: "<<variables<<std::endl;
+		std::cout<<"Modified function:"<<Function<<std::endl;
+		std::cout<<"Pluses:           "<<pluses<<std::endl;
+		std::cout<<"Minuses:          "<<minuses<<std::endl;
+		std::cout<<"Multiplies:       "<<multiplies<<std::endl;
+		std::cout<<"Divisions:        "<<divisions<<std::endl;
+		std::cout<<"Breckets:         "<<breckets<<std::endl;
+		std::cout<<"Powers:           "<<powers<<std::endl;
+		std::cout<<"Numbers:          "<<numbers<<std::endl;
+		std::cout<<"Variables:        "<<variables<<std::endl;
 	slide();
 }
 int main()
 {
-	std::cout<<"f+uc+k"<<std::endl;
-	Derivative("2*x^((2+4)/3)-44.4x+6");
+	Derivative("2*x^((2+4)/3)-44.4x+6xyz");
 }
 
