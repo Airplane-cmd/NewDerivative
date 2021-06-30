@@ -124,15 +124,15 @@ void Derivative(std::string Function)
 			variables += "_";
 	}
 	std::cout << std::endl;
-		std::cout<<"Modified function:"<<Function<<std::endl;
-		std::cout<<"Pluses:           "<<pluses<<std::endl;
-		std::cout<<"Minuses:          "<<minuses<<std::endl;
-		std::cout<<"Multiplies:       "<<multiplies<<std::endl;
-		std::cout<<"Divisions:        "<<divisions<<std::endl;
-		std::cout<<"Breckets:         "<<breckets<<std::endl;
-		std::cout<<"Powers:           "<<powers<<std::endl;
-		std::cout<<"Numbers:          "<<numbers<<std::endl;
-		std::cout<<"Variables:        "<<variables<<std::endl;
+		std::cout<<"Modified function: "<<Function<<std::endl;
+		std::cout<<"Pluses:            "<<pluses<<std::endl;
+		std::cout<<"Minuses:           "<<minuses<<std::endl;
+		std::cout<<"Multiplies:        "<<multiplies<<std::endl;
+		std::cout<<"Divisions:         "<<divisions<<std::endl;
+		std::cout<<"Breckets:          "<<breckets<<std::endl;
+		std::cout<<"Powers:            "<<powers<<std::endl;
+		std::cout<<"Numbers:           "<<numbers<<std::endl;
+		std::cout<<"Variables:         "<<variables<<std::endl;
 	slide();
 }
 int main()
