@@ -142,25 +142,58 @@ void Derivative(std::string Function)
 			++fuckingCounter;
 			if(numbersR[realNumbersCounterLocal + 1] == '_')
 				--fuckingCounter;
+		}		
+	}
+	for(int hui = 0; hui < realNumbersCounter; ++hui)
+	{
+		for(int cock = realStrings[hui].length(); cock != 0 ; cock--)
+		{
+			if(realStrings[hui][cock] == '0')
+				realDoubles[hui] += 0.0;
+			if(realStrings[hui][cock] == '1')
+				realDoubles[hui] += 1.0;
+			if(realStrings[hui][cock] == '2')
+				realDoubles[hui] += 2.0;
+			if(realStrings[hui][cock] == '3')
+				realDoubles[hui] += 3.0;
+			if(realStrings[hui][cock] == '4')
+				realDoubles[hui] += 4.0;
+			if(realStrings[hui][cock] == '5')
+				realDoubles[hui] += 5.0;
+			if(realStrings[hui][cock] == '6')
+				realDoubles[hui] += 6.0;
+			if(realStrings[hui][cock] == '7')
+				realDoubles[hui] += 7.0;
+			if(realStrings[hui][cock] == '8')
+				realDoubles[hui] += 8.0;
+			if(realStrings[hui][cock] == '9')
+				realDoubles[hui] += 9.0;
+			for(int oneMoreFuck = 0; oneMoreFuck < realStrings[hui].length(); ++oneMoreFuck)
+			{
+				realDoubles[hui] *= 10;
+			}
 		}
-			
-			
 	}
 	std::cout << std::endl;
-		std::cout<<"Modified function:"<<Function<<std::endl;
-		std::cout<<"Pluses:           "<<pluses<<std::endl;
-		std::cout<<"Minuses:          "<<minuses<<std::endl;
-		std::cout<<"Multiplies:       "<<multiplies<<std::endl;
-		std::cout<<"Divisions:        "<<divisions<<std::endl;
-		std::cout<<"Breckets:         "<<breckets<<std::endl;
-		std::cout<<"Powers:           "<<powers<<std::endl;
-		std::cout<<"Numbers:          "<<numbersR<<std::endl;
-		std::cout<<"Variables:        "<<variables<<std::endl;
+		std::cout<<"Modified function: "<<Function<<std::endl;
+		std::cout<<"Pluses:            "<<pluses<<std::endl;
+		std::cout<<"Minuses:           "<<minuses<<std::endl;
+		std::cout<<"Multiplies:        "<<multiplies<<std::endl;
+		std::cout<<"Divisions:         "<<divisions<<std::endl;
+		std::cout<<"Breckets:          "<<breckets<<std::endl;
+		std::cout<<"Powers:            "<<powers<<std::endl;
+		std::cout<<"Numbers:           "<<numbersR<<std::endl;
+		std::cout<<"Variables:         "<<variables<<std::endl;
 	slide();
 		std::cout<<"Real numbers count:"<<realNumbersCounter<<std::endl;
 		for (int you = 0; you < realNumbersCounter; ++you)
 		{
 			std::cout << realStrings[you] << std::endl;
+		}
+	slide();
+		for (int you = 0; you < realNumbersCounter; ++you)
+		{
+			std::cout << realDoubles[you] << std::endl;
 		}
 	slide();
 }
